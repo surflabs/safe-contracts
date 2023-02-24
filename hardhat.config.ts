@@ -30,7 +30,7 @@ if (PK) {
   };
 }
 
-if (["mainnet", "rinkeby", "kovan", "goerli"].includes(argv.network) && INFURA_KEY === undefined) {
+if (["mainnet", "rinkeby", "kovan", "goerli", "bscTestnet"].includes(argv.network) && INFURA_KEY === undefined) {
   throw new Error(
     `Could not find Infura key in env, unable to connect to network ${argv.network}`,
   );
@@ -91,6 +91,10 @@ const userConfig: HardhatUserConfig = {
       ...sharedNetworkConfig,
       url: `https://volta-rpc.energyweb.org`,
     },
+    bscTestnet: {
+      ...sharedNetworkConfig,
+      url: `https://data-seed-prebsc-1-s1.binance.org:8545`,
+    }
   },
   namedAccounts: {
     deployer: 0,
